@@ -1,0 +1,47 @@
+#################
+## Eclipse
+#################
+
+*.pydevproject
+.project
+.metadata
+bin/
+gen/
+libs/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# Others
+[Bb]in
+[Oo]bj
+
+
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini

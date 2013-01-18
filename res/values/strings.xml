@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Whoopwhoop</string>
+    <string name="search">Search</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_refresh">Refresh</string>    
+</resources>
