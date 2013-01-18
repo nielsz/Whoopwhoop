@@ -15,7 +15,7 @@ public class MessagesDataSource {
   private SQLiteDatabase database;
   private MySQLiteHelper dbHelper;
   private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-      MySQLiteHelper.COLUMN_MESSAGE };
+      MySQLiteHelper.COLUMN_MESSAGE, MySQLiteHelper.COLUMN_GENDER };
 
   public MessagesDataSource(Context context) {
     dbHelper = new MySQLiteHelper(context);
@@ -29,18 +29,19 @@ public class MessagesDataSource {
     dbHelper.close();
   }
 
-  public Message createComment(String comment) {
+  public Message createMessage(Message message) {
     ContentValues values = new ContentValues();
-    values.put(MySQLiteHelper.COLUMN_MESSAGE, comment);
+    values.put(MySQLiteHelper.COLUMN_MESSAGE, message.getMessage());
+    values.put(MySQLiteHelper.COLUMN_GENDER, message.getGender());
     long insertId = database.insert(MySQLiteHelper.TABLE_MESSAGES, null,
         values);
     Cursor cursor = database.query(MySQLiteHelper.TABLE_MESSAGES,
         allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
         null, null, null);
     cursor.moveToFirst();
-    Message newComment = cursorToMessage(cursor);
+    Message newMessage = cursorToMessage(cursor);
     cursor.close();
-    return newComment;
+    return newMessage;
   }
 
   public void deleteMessage(Message msg) {
@@ -50,7 +51,7 @@ public class MessagesDataSource {
         + " = " + id, null);
   }
 
-  public List<Message> getAllComments() {
+  public List<Message> getAllMessages() {
     List<Message> msgs = new ArrayList<Message>();
 
     Cursor cursor = database.query(MySQLiteHelper.TABLE_MESSAGES,
@@ -71,6 +72,7 @@ public class MessagesDataSource {
     Message message = new Message();
     message.setId(cursor.getLong(0));
     message.setMessage(cursor.getString(1));
+    message.setGender((cursor.getInt(2)));    
     return message;
   }
 } 

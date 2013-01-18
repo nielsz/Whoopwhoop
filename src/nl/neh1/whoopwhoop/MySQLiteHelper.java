@@ -10,6 +10,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
   public static final String TABLE_MESSAGES = "messages";
   public static final String COLUMN_ID = "_id";
   public static final String COLUMN_MESSAGE = "message";
+  public static final String COLUMN_GENDER = "gender";
 
   private static final String DATABASE_NAME = "messages.db";
   private static final int DATABASE_VERSION = 1;
@@ -18,7 +19,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
   private static final String DATABASE_CREATE = "create table "
       + TABLE_MESSAGES + "(" + COLUMN_ID
       + " integer primary key autoincrement, " + COLUMN_MESSAGE
-      + " text not null);";
+      + " text not null, "+ COLUMN_GENDER+" integer not null);";
 
   public MySQLiteHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
